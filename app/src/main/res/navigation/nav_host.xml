@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_host"
+    app:startDestination="@id/rcViewFragment">
+
+    <fragment
+        android:id="@+id/rcViewFragment"
+        android:name="com.example.fragmentandrcview.RcViewFragment"
+        android:label="rc_view_fragment"
+        tools:layout="@layout/rc_view_fragment" >
+        <action
+            android:id="@+id/action_rcViewFragment_to_detalityFragment"
+            app:destination="@id/detalityFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detalityFragment"
+        android:name="com.example.fragmentandrcview.DetalityFragment"
+        android:label="fragment_detality"
+        tools:layout="@layout/fragment_detality">
+        <argument
+            android:name="position"
+            app:argType="integer"
+            android:defaultValue="0">
+        </argument>
+    </fragment>
+</navigation>
