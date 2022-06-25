@@ -50,6 +50,7 @@ class DetalityFragment : Fragment(R.layout.fragment_detality) {
         }
 
     }
+    //TODO: отрефактирить
     fun getList(characters: List<Result>) : List<Result> {
         listOfCharacters = characters
         Log.d("TAG", "размер массива ${ listOfCharacters.size}")
