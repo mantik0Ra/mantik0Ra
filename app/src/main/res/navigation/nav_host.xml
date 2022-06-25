@@ -25,5 +25,15 @@
             app:argType="integer"
             android:defaultValue="0">
         </argument>
+        <argument
+            android:name="countPage"
+            app:argType="integer"
+            android:defaultValue="0">
+        </argument>
+        <argument
+            android:name="countPosition"
+            app:argType="integer"
+            android:defaultValue="0">
+        </argument>
     </fragment>
 </navigation>

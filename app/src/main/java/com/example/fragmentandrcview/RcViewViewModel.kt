@@ -31,8 +31,8 @@ class RcViewViewModel : ViewModel() {
         })
     }
 
-    fun getDetails(id: Int) {
-        val retrofit = API.create().getDetails(id)
+    fun getDetails() {
+        val retrofit = API.create().getDetails()
 
         retrofit.enqueue(object : Callback<Characters> {
             override fun onResponse(call: Call<Characters>, response: Response<Characters>) {

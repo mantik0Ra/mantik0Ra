@@ -13,8 +13,8 @@ interface API {
     @GET("character/")
     fun getCharacters(@Query("page") pageId : String) : Call<Characters>
 
-    @GET("character/{id}")
-    fun getDetails(@Path("id") id: Int) : Call<Characters>
+    @GET("character/")
+    fun getDetails() : Call<Characters>
 
     companion object {
 

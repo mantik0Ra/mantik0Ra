@@ -17,6 +17,7 @@ class RcViewFragment : Fragment(R.layout.rc_view_fragment), FragAdapter.ItemClic
     private lateinit var rcView: RecyclerView
     private lateinit var rcAdapter: FragAdapter
     var countPage = 1
+    var countPosition = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,6 +67,7 @@ class RcViewFragment : Fragment(R.layout.rc_view_fragment), FragAdapter.ItemClic
         when(item.itemId) {
             R.id.item1 -> {
                 countPage++
+                countPosition += 20
                 viewModel.getCharacters(countPage.toString())
                 Log.d("TAG", "Item clicked $countPage")
             }
@@ -76,7 +78,7 @@ class RcViewFragment : Fragment(R.layout.rc_view_fragment), FragAdapter.ItemClic
 
     override fun onItemClick(position: Int) {
         Log.d("TAG", "$position позиция")
-        val direction = RcViewFragmentDirections.actionRcViewFragmentToDetalityFragment(position)
+        val direction = RcViewFragmentDirections.actionRcViewFragmentToDetalityFragment(position, countPage, countPosition)
         findNavController().navigate(direction)
     }
 
