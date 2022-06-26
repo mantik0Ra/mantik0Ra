@@ -2,4 +2,7 @@
     <string name="app_name">FragmentAndRcView</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="NameTextView">Name: </string>
+    <string name="StatusTextView">Status: </string>
+    <string name="GenderTextView">Gender: </string>
 </resources>

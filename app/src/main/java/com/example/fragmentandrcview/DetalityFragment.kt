@@ -54,7 +54,7 @@ class DetalityFragment : Fragment(R.layout.fragment_detality) {
         position -= countPosition
         Log.d("TAG", "позиция и страница ${position}, ${countPage}")
     }
-    
+
     private fun observeInfoByLiveDataAboutCharacter() {
         VM.liveCharactersData.observe(this.viewLifecycleOwner) {
             listOfCharacters = it
