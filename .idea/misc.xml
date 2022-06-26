@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/kirya/OneDrive/Documents/GitHub/mantik0Ra/app/src/main/res/drawable/ic_wifi_off.xml" value="0.196" />
         <entry key="..\:/Users/kirya/OneDrive/Documents/GitHub/mantik0Ra/app/src/main/res/layout/activity_main.xml" value="0.14356884057971014" />
         <entry key="..\:/Users/kirya/OneDrive/Documents/GitHub/mantik0Ra/app/src/main/res/layout/fragment_detality.xml" value="0.33" />
+        <entry key="..\:/Users/kirya/OneDrive/Documents/GitHub/mantik0Ra/app/src/main/res/layout/rc_view_fragment.xml" value="0.18802083333333333" />
         <entry key="..\:/Users/kirya/OneDrive/Documents/GitHub/mantik0Ra/app/src/main/res/menu/menu.xml" value="0.36666666666666664" />
         <entry key="..\:/android/FragmentAndRcView/app/src/main/res/layout/activity_main.xml" value="0.35280797101449274" />
         <entry key="..\:/android/FragmentAndRcView/app/src/main/res/layout/card_view.xml" value="0.16804407713498623" />

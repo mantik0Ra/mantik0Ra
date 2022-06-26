@@ -7,4 +7,5 @@
     <string name="GenderTextView">Gender: </string>
     <string name="goback">goBack</string>
     <string name="gonext">goNext</string>
+    <string name="lose_internet_connection">Lose internet connection</string>
 </resources>
