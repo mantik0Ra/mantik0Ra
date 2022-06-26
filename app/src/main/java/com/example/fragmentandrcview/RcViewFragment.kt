@@ -2,6 +2,8 @@ package com.example.fragmentandrcview
 
 import android.app.Activity
 import android.content.Context
+import android.content.IntentFilter
+import android.net.ConnectivityManager
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
@@ -103,5 +105,8 @@ class RcViewFragment : Fragment(R.layout.rc_view_fragment), FragAdapter.ItemClic
         val direction = RcViewFragmentDirections.actionRcViewFragmentToDetalityFragment(position, countPage, countPosition)
         findNavController().navigate(direction)
     }
+
+
+
 
 }
