@@ -1,11 +1,14 @@
 package com.example.fragmentandrcview
 
+import android.app.Activity
+import android.content.Context
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import android.widget.Adapter
+import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -65,11 +68,30 @@ class RcViewFragment : Fragment(R.layout.rc_view_fragment), FragAdapter.ItemClic
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when(item.itemId) {
-            R.id.item1 -> {
-                countPage++
-                countPosition += 20
-                viewModel.getCharacters(countPage.toString())
-                Log.d("TAG", "Item clicked $countPage")
+            R.id.itemNext -> {
+                if(countPage <= 40) {
+                    countPage++
+                    countPosition += 20
+                    viewModel.getCharacters(countPage.toString())
+                    Log.d("TAG", "Item clicked $countPage")
+                }
+                if(countPage == 40) {
+                    countPage = 1
+                    countPosition = 0
+                    viewModel.getCharacters(countPage.toString())
+                }
+            }
+            R.id.itemBack -> {
+                if(countPage == 1) {
+                    countPage = 40
+                    countPosition = 780
+                    viewModel.getCharacters(countPage.toString())
+                }
+                if (countPage > 1) {
+                    countPage --
+                    countPosition -= 20
+                    viewModel.getCharacters(countPage.toString())
+                }
             }
 
         }

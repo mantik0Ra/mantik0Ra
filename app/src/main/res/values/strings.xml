@@ -5,4 +5,6 @@
     <string name="NameTextView">Name: </string>
     <string name="StatusTextView">Status: </string>
     <string name="GenderTextView">Gender: </string>
+    <string name="goback">goBack</string>
+    <string name="gonext">goNext</string>
 </resources>
