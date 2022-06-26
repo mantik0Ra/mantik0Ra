@@ -1,17 +1,11 @@
 package com.example.fragmentandrcview
 
-import android.app.Activity
-import android.content.Context
-import android.content.IntentFilter
-import android.net.ConnectivityManager
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
-import android.widget.Adapter
-import android.widget.Toast
-import androidx.core.os.bundleOf
+import android.widget.LinearLayout
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +15,11 @@ class RcViewFragment : Fragment(R.layout.rc_view_fragment), FragAdapter.ItemClic
     private lateinit var viewModel: RcViewViewModel
     private lateinit var rcView: RecyclerView
     private lateinit var rcAdapter: FragAdapter
+    private lateinit var checkConnectionInternetLiveData : CheckConnectionInternetLiveData
+    private lateinit var viewGroupWithInternetConnection: LinearLayout
+    private lateinit var viewGroupWithoutInternetConnection: LinearLayout
+    private lateinit var menuNextItem: MenuItem
+    private lateinit var menuBackItem: MenuItem
     var countPage = 1
     var countPosition = 0
 
@@ -42,6 +41,10 @@ class RcViewFragment : Fragment(R.layout.rc_view_fragment), FragAdapter.ItemClic
         initViews(view)
         viewModel.getCharacters("1")
         observerViews()
+        viewGroupWithInternetConnection = view.findViewById(R.id.layoutMainWithConnection)
+        viewGroupWithoutInternetConnection = view.findViewById(R.id.layoutWithoutConnection)
+        checkNetworkConnection()
+
 
 
 
@@ -64,13 +67,15 @@ class RcViewFragment : Fragment(R.layout.rc_view_fragment), FragAdapter.ItemClic
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.menu, menu)
+        menuNextItem = menu.findItem(R.id.itemNext)
+        menuBackItem = menu.findItem(R.id.itemBack)
         super.onCreateOptionsMenu(menu, inflater)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when(item.itemId) {
-            R.id.itemNext -> {
+            menuNextItem.itemId -> {
                 if(countPage <= 40) {
                     countPage++
                     countPosition += 20
@@ -83,7 +88,7 @@ class RcViewFragment : Fragment(R.layout.rc_view_fragment), FragAdapter.ItemClic
                     viewModel.getCharacters(countPage.toString())
                 }
             }
-            R.id.itemBack -> {
+            menuBackItem.itemId -> {
                 if(countPage == 1) {
                     countPage = 40
                     countPosition = 780
@@ -97,6 +102,9 @@ class RcViewFragment : Fragment(R.layout.rc_view_fragment), FragAdapter.ItemClic
             }
 
         }
+        ResetMenuButton()
+
+
         return super.onOptionsItemSelected(item)
     }
 
@@ -106,7 +114,48 @@ class RcViewFragment : Fragment(R.layout.rc_view_fragment), FragAdapter.ItemClic
         findNavController().navigate(direction)
     }
 
+    private fun checkNetworkConnection() {
+        checkConnectionInternetLiveData = CheckConnectionInternetLiveData(requireActivity().application)
+
+        checkConnectionInternetLiveData.observe(this.viewLifecycleOwner) { isConnected ->
+
+            if (isConnected) {
+                ResetViewWithInternetConnection()
 
 
+            }
+            if (!isConnected) {
+                ResetViewWithoutInternetConnection()
+            }
+        }
+    }
+    private fun ResetViewWithInternetConnection() {
+        viewGroupWithInternetConnection.visibility = View.VISIBLE
+        viewGroupWithoutInternetConnection.visibility = View.GONE
+        countPage = 1
+        countPosition = 0
+    }
+
+    private fun ResetViewWithoutInternetConnection() {
+        viewGroupWithInternetConnection.visibility = View.GONE
+        viewGroupWithoutInternetConnection.visibility = View.VISIBLE
+        countPage = 1
+        countPosition = 0
+    }
+    private fun ResetMenuButton() {
+        checkConnectionInternetLiveData = CheckConnectionInternetLiveData(requireActivity().application)
+
+        checkConnectionInternetLiveData.observe(this.viewLifecycleOwner) { isConnected ->
+
+            if(isConnected) {
+                menuNextItem.isEnabled = true
+                menuBackItem.isEnabled = true
+            }
+            if(!isConnected) {
+                menuNextItem.isEnabled = false
+                menuBackItem.isEnabled = false
+            }
+        }
+    }
 
 }
