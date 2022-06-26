@@ -9,6 +9,8 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 
+//TODO: приложение может крашнутся, когда включено обе сети и после одна из них отключается.
+
 class CheckConnectionInternetLiveData(private val connectivityManager: ConnectivityManager) :
                                                                         LiveData<Boolean>() {
     constructor(application: Application) : this(
