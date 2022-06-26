@@ -7,14 +7,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
+import androidx.fragment.app.viewModels
+import kotlin.properties.Delegates
 
 
 class DetalityFragment : Fragment(R.layout.fragment_detality) {
 
     var listOfCharacters = listOf<Result>()
+    private val VM: RcViewViewModel by viewModels()
+    lateinit var textName: TextView
+    lateinit var textStatus: TextView
+    lateinit var textGender: TextView
+    var position by Delegates.notNull<Int>()
+    var countPage by Delegates.notNull<Int>()
+    var countPosition by Delegates.notNull<Int>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,34 +33,36 @@ class DetalityFragment : Fragment(R.layout.fragment_detality) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var textName = view.findViewById<TextView>(R.id.textName)
-        var textStatus = view.findViewById<TextView>(R.id.textStatus)
-        var textGender = view.findViewById<TextView>(R.id.textGender)
-
-        val VM = ViewModelProvider(this)[RcViewViewModel::class.java]
-
-        var position = DetalityFragmentArgs.fromBundle(requireArguments()).position
-        var countPage = DetalityFragmentArgs.fromBundle(requireArguments()).countPage
-        var countPosition = DetalityFragmentArgs.fromBundle(requireArguments()).countPosition
+        initViews(view)
+        takeInfoAboutPositionsOfCharacter()
         VM.getCharacters(countPage.toString())
+        observeInfoByLiveDataAboutCharacter()
+
+
+    }
+
+    private fun initViews(view: View) {
+        textName = view.findViewById<TextView>(R.id.textName)
+        textStatus = view.findViewById<TextView>(R.id.textStatus)
+        textGender = view.findViewById<TextView>(R.id.textGender)
+    }
+
+    private fun takeInfoAboutPositionsOfCharacter() {
+        position = DetalityFragmentArgs.fromBundle(requireArguments()).position
+        countPage = DetalityFragmentArgs.fromBundle(requireArguments()).countPage
+        countPosition = DetalityFragmentArgs.fromBundle(requireArguments()).countPosition
         position -= countPosition
         Log.d("TAG", "позиция и страница ${position}, ${countPage}")
-
-
+    }
+    
+    private fun observeInfoByLiveDataAboutCharacter() {
         VM.liveCharactersData.observe(this.viewLifecycleOwner) {
-            getList(it)
+            listOfCharacters = it
             textName.text = listOfCharacters[position - 1].name
             textStatus.text = listOfCharacters[position - 1].status
             textGender.text = listOfCharacters[position - 1].gender
             Log.d("TAG", "${listOfCharacters.size}")
         }
-
-    }
-    //TODO: отрефактирить
-    fun getList(characters: List<Result>) : List<Result> {
-        listOfCharacters = characters
-        Log.d("TAG", "размер массива ${ listOfCharacters.size}")
-        return listOfCharacters
     }
 
 }
