@@ -58,9 +58,9 @@ class DetalityFragment : Fragment(R.layout.fragment_detality) {
     private fun observeInfoByLiveDataAboutCharacter() {
         VM.liveCharactersData.observe(this.viewLifecycleOwner) {
             listOfCharacters = it
-            textName.text = listOfCharacters[position - 1].name
-            textStatus.text = listOfCharacters[position - 1].status
-            textGender.text = listOfCharacters[position - 1].gender
+            textName.text = " ${listOfCharacters[position - 1].name}"
+            textStatus.text = " ${listOfCharacters[position - 1].status}"
+            textGender.text = " ${listOfCharacters[position - 1].gender}"
             Log.d("TAG", "${listOfCharacters.size}")
         }
     }

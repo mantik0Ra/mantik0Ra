@@ -10,14 +10,15 @@
         android:id="@+id/layoutMainWithConnection"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:backgroundTint="@color/purple_200"
+        android:background="@color/purple_200"
         android:visibility="gone">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/FragRcView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </LinearLayout>
 
@@ -25,24 +26,25 @@
         android:id="@+id/layoutWithoutConnection"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
+        android:background="@color/purple_200"
+        android:backgroundTint="@color/purple_200"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="visible">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/ic_wifi_off"/>
+            android:src="@drawable/ic_wifi_off" />
 
         <TextView
             android:layout_width="300dp"
-            android:layout_marginStart="50dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
             android:text="@string/lose_internet_connection"
-            android:textStyle="italic"
+            android:textColor="@color/black"
             android:textSize="20sp"
-            android:textColor="@color/black" />
-
+            android:textStyle="italic" />
 
 
     </LinearLayout>

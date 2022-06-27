@@ -158,4 +158,6 @@ class RcViewFragment : Fragment(R.layout.rc_view_fragment), FragAdapter.ItemClic
         }
     }
 
+
+
 }
