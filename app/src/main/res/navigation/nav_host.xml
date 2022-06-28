@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/rcViewFragment"
-        android:name="com.example.fragmentandrcview.RcViewFragment"
+        android:name="com.example.fragmentandrcview.screens.RcViewFragment"
         android:label="rc_view_fragment"
         tools:layout="@layout/rc_view_fragment" >
         <action
@@ -17,7 +17,7 @@
 
     <fragment
         android:id="@+id/detalityFragment"
-        android:name="com.example.fragmentandrcview.DetalityFragment"
+        android:name="com.example.fragmentandrcview.screens.DetalityFragment"
         android:label="fragment_detality"
         tools:layout="@layout/fragment_detality">
         <argument

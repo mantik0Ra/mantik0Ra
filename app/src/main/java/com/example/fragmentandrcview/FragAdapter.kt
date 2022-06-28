@@ -6,10 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fragmentandrcview.screens.RcViewFragment
 
 
 class FragAdapter(private var characters: List<Result>,
-                val itemClickListener: RcViewFragment) : RecyclerView.Adapter<FragAdapter.ViewHolder>() {
+                val itemClickListener: RcViewFragment
+) : RecyclerView.Adapter<FragAdapter.ViewHolder>() {
 
     interface ItemClickListener {
         fun onItemClick(position: Int)

@@ -1,4 +1,4 @@
-package com.example.fragmentandrcview
+package com.example.fragmentandrcview.screens
 
 import android.os.Bundle
 import android.util.Log
@@ -8,6 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.viewModels
+import com.example.fragmentandrcview.R
+import com.example.fragmentandrcview.RcViewViewModel
+import com.example.fragmentandrcview.Result
 import kotlin.properties.Delegates
 
 
