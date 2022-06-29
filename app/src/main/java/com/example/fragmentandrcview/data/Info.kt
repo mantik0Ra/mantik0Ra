@@ -1,4 +1,4 @@
-package com.example.fragmentandrcview
+package com.example.fragmentandrcview.data
 
 data class Info(
     val count: Int,

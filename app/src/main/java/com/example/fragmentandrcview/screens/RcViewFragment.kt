@@ -1,4 +1,4 @@
-package com.example.fragmentandrcview
+package com.example.fragmentandrcview.screens
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
@@ -9,6 +9,10 @@ import android.widget.LinearLayout
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fragmentandrcview.CheckConnectionInternetLiveData
+import com.example.fragmentandrcview.screens.adapters.FragAdapter
+import com.example.fragmentandrcview.R
+import com.example.fragmentandrcview.viewmodel.RcViewViewModel
 
 class RcViewFragment : Fragment(R.layout.rc_view_fragment), FragAdapter.ItemClickListener {
 
