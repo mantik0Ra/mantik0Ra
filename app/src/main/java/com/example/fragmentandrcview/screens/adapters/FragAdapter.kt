@@ -1,4 +1,4 @@
-package com.example.fragmentandrcview
+package com.example.fragmentandrcview.screens.adapters
 
 
 import android.view.LayoutInflater
@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.fragmentandrcview.R
+import com.example.fragmentandrcview.data.Result
 import com.example.fragmentandrcview.screens.RcViewFragment
 
 
 class FragAdapter(private var characters: List<Result>,
-                val itemClickListener: RcViewFragment
+                  val itemClickListener: RcViewFragment
 ) : RecyclerView.Adapter<FragAdapter.ViewHolder>() {
 
     interface ItemClickListener {

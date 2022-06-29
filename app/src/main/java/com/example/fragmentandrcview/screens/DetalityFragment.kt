@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.viewModels
 import com.example.fragmentandrcview.R
-import com.example.fragmentandrcview.RcViewViewModel
-import com.example.fragmentandrcview.Result
+import com.example.fragmentandrcview.viewmodel.RcViewViewModel
+import com.example.fragmentandrcview.data.Result
 import kotlin.properties.Delegates
 
 
